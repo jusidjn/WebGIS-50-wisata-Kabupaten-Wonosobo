@@ -1,0 +1,120 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          <!DOCTYPE html>
+<html>
+<head>
+    <title>WebGIS 50 Wisata Wonosobo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html, body, #map {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        var map = L.map('map').setView([-7.3639, 109.9000], 11);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        var wisata = [
+            { "nama": "Kawah Sikidang", "lat": -7.2033, "lon": 109.9200 },
+            { "nama": "Telaga Warna", "lat": -7.2090, "lon": 109.9150 },
+            { "nama": "Bukit Sikunir", "lat": -7.2235, "lon": 109.9035 },
+            { "nama": "Tuk Bimo Lukar", "lat": -7.2250, "lon": 109.9110 },
+            { "nama": "Candi Arjuna", "lat": -7.2067, "lon": 109.9050 },
+            { "nama": "Dieng Plateau Theater", "lat": -7.2095, "lon": 109.9115 },
+            { "nama": "Museum Kailasa", "lat": -7.2098, "lon": 109.9102 },
+            { "nama": "Batu Pandang Ratapan Angin", "lat": -7.2105, "lon": 109.9190 },
+            { "nama": "Embung Kledung", "lat": -7.2780, "lon": 109.9618 },
+            { "nama": "Curug Winong", "lat": -7.5050, "lon": 109.8360 },
+            { "nama": "Air Terjun Sikarim", "lat": -7.2581, "lon": 109.9318 },
+            { "nama": "Lubang Sewu", "lat": -7.5630, "lon": 109.6767 },
+            { "nama": "Kebun Teh Tambi", "lat": -7.3280, "lon": 109.9635 },
+            { "nama": "Agrowisata Tambi", "lat": -7.3280, "lon": 109.9500 },
+            { "nama": "Gunung Prau", "lat": -7.2250, "lon": 109.9000 },
+            { "nama": "Gunung Sindoro", "lat": -7.3000, "lon": 109.9883 },
+            { "nama": "Gunung Sumbing", "lat": -7.3900, "lon": 110.0000 },
+            { "nama": "Telaga Menjer", "lat": -7.2977, "lon": 109.8900 },
+            { "nama": "Taman Rekreasi Kalianget", "lat": -7.3655, "lon": 109.8950 },
+            { "nama": "Taman Kartini Wonosobo", "lat": -7.3630, "lon": 109.9020 },
+            { "nama": "Alun-Alun Wonosobo", "lat": -7.3635, "lon": 109.8990 },
+            { "nama": "Waduk Wadaslintang", "lat": -7.5930, "lon": 109.7020 },
+            { "nama": "Grojogan Watu Ireng", "lat": -7.3650, "lon": 109.7800 },
+            { "nama": "Pesona Kumejing", "lat": -7.5145, "lon": 109.8580 },
+            { "nama": "Goa Jatijajar", "lat": -7.7420, "lon": 109.4825 },
+            { "nama": "Curug Sikarim", "lat": -7.2500, "lon": 109.9100 },
+            { "nama": "Curug Lawe", "lat": -7.2700, "lon": 109.9500 },
+            { "nama": "Bukit Awan Sindoro Sumbing", "lat": -7.3500, "lon": 109.9700 },
+            { "nama": "Taman Serayu", "lat": -7.3700, "lon": 109.8900 },
+            { "nama": "Goa Semar", "lat": -7.2200, "lon": 109.9100 },
+            { "nama": "Tuk Songo", "lat": -7.2150, "lon": 109.9120 },
+            { "nama": "Pemandian Air Panas Mangli", "lat": -7.2670, "lon": 109.9800 },
+            { "nama": "Bukit Cinta", "lat": -7.2900, "lon": 109.9500 },
+            { "nama": "Agrowisata Tambi 2", "lat": -7.3300, "lon": 109.9600 },
+            { "nama": "Sikunir Sunrise Point", "lat": -7.2230, "lon": 109.9030 },
+            { "nama": "Curug Muncar", "lat": -7.5150, "lon": 109.8500 },
+            { "nama": "Kebun Teh Kalikuning", "lat": -7.2500, "lon": 109.9400 },
+            { "nama": "Dieng Plateau Homestay", "lat": -7.2100, "lon": 109.9100 },
+            { "nama": "Rumah Adat Dieng", "lat": -7.2090, "lon": 109.9110 },
+            { "nama": "Embung Tlogojati", "lat": -7.2750, "lon": 109.9650 },
+            { "nama": "Kampung Kidul", "lat": -7.3700, "lon": 109.9000 },
+            { "nama": "Curug Sianggar", "lat": -7.4000, "lon": 109.8600 },
+            { "nama": "Desa Wisata Sembungan", "lat": -7.2200, "lon": 109.9020 },
+            { "nama": "Kampung Wisata Gemawang", "lat": -7.3600, "lon": 109.9200 },
+            { "nama": "Kampung Wisata Sigedang", "lat": -7.2250, "lon": 109.9050 },
+            { "nama": "Curug Kembang Soka", "lat": -7.2800, "lon": 109.9700 },
+            { "nama": "Embung Mangli", "lat": -7.2650, "lon": 109.9850 },
+            { "nama": "Wisata Curug Sirawe", "lat": -7.5100, "lon": 109.8700 },
+            { "nama": "Wisata Alam Surodipo", "lat": -7.2900, "lon": 109.9400 }
+        ];
+
+        wisata.forEach(function(w) {
+            L.marker([w.lat, w.lon]).addTo(map)
+              .bindPopup("<b>" + w.nama + "</b>");
+        });
+    </script>
+</body>
+</html>
